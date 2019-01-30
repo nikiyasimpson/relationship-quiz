@@ -13,52 +13,60 @@ class App extends Component {
 
 	      { number: 1,
 	      	question: 'Are you currently in a relationship?',
-	      	options: ['Yes','No','Unsure']
+	      	options: ['Yes','No','Unsure'],
+					answer: ''
 	      },
 
 	      { number: 2,
 	      	question: 'Are you currently married?',
-	      	options: ['Yes','No','Unsure']
+	      	options: ['Yes','No','Unsure'],
+					answer: ''
+
 	      },
 
 	      { number: 3,
 	      	question: 'Are you experiencing any of the following issues?',
-	      	options: ['Infidelity','Trust','Death of a Loved One', 'Communication','Addiction','Intimacy']
+	      	options: ['Infidelity','Trust','Death of a Loved One', 'Communication','Addiction','Intimacy'],
+					answer: ''
 	      },
 
 	      { number: 4,
 	      	question: 'Does your partner/spouse want counseling also?',
-	      	options: ['Yes','No','Unsure']
+	      	options: ['Yes','No','Unsure'],
+					answer: ''
 	      },
 
 	      { number: 5,
 	      	question: 'Are there other family members that you would like to include in your sessions (e.g. children, parents) ?',
-	      	options: ['Yes','No','Unsure']
+	      	options: ['Yes','No','Unsure'],
+					answer: ''
 	      },
 
 	      { number: 6,
 	      	question: 'Are you dealing with a lot of pain in your relationship?',
-	      	options: ['Yes','No','Unsure']
+	      	options: ['Yes','No','Unsure'],
+					answer: ''
 	      },
 
 	      { number: 7,
 	      	question: 'We prefer to have our counseling sessions ...',
-	      	options: ['In-Office','Phone','Online','At our home']
+	      	options: ['In-Office','Phone','Online','At our home'],
+					answer: ''
 	      },
 
 	      { number: 8,
 	      	question: 'Both of us are ready to end this relationship?',
-	      	options: ['Yes','No','Unsure']
+	      	options: ['Yes','No','Unsure'],
+					answer: ''
 	      },
 
 	      { number: 9,
 	      	question: 'Would your partner/spouse be able to go to counseling with you?',
-	      	options: ['Yes','No','Unsure']
+	      	options: ['Yes','No','Unsure'],
+					answer: ''
 	      }
 
 			],
-
-          answers: [],
 
 
           updateSuperState: obj => {
@@ -126,7 +134,7 @@ class App extends Component {
           <header className="App-header">
           </header>
 
-       		<Question question ={this.state.questions[0]} />
+       		<Question questions ={this.state.questions} />
 
        		<footer>
             	<p>Nikiya M. Simpson, Arkansas Relationship Counseling Center</p>
