@@ -21,8 +21,15 @@
   color: #61dafb;
 }
 
+body {
+	background-color: lightblue;
+}
+
 .question {
-  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: slategrey;
   border: 1px grey solid;
   border-radius: 5px;
@@ -30,6 +37,7 @@
   font-weight: bolder;
   padding-top: 10px;
   padding-bottom: 10px;
+  z-index: 1;
 
 }
 
