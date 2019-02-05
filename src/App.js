@@ -1,144 +1,58 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Question from './Question'
 
 class App extends Component {
 
+
 	  constructor() {
-      super();
-      this.state = {
+				super();
 
-				questions : [
+				this.state = {
 
-	      { number: 1,
-	      	question: 'Are you currently in a relationship?',
-	      	options: ['Yes','No','Unsure'],
-					answer: ''
-	      },
+					answer1 : '',
+					answer2 : '',
+					answer3 : '',
+					answer4 : '',
+					answer5 : '',
+					answer6 : '',
+					answer7 : '',
+					answer8 : '',
+					answer9: ''
+			}
 
-	      { number: 2,
-	      	question: 'Are you currently married?',
-	      	options: ['Yes','No','Unsure'],
-					answer: ''
+}
 
-	      },
+	componentDidMount() {
+		console.log(this.state);
+	}
 
-	      { number: 3,
-	      	question: 'Are you experiencing any of the following issues?',
-	      	options: ['Infidelity','Trust','Death of a Loved One', 'Communication','Addiction','Intimacy'],
-					answer: ''
-	      },
+setAnswer(q, a){
+		this.setState({q:  a});
+		console.log(this.state);
 
-	      { number: 4,
-	      	question: 'Does your partner/spouse want counseling also?',
-	      	options: ['Yes','No','Unsure'],
-					answer: ''
-	      },
-
-	      { number: 5,
-	      	question: 'Are there other family members that you would like to include in your sessions (e.g. children, parents) ?',
-	      	options: ['Yes','No','Unsure'],
-					answer: ''
-	      },
-
-	      { number: 6,
-	      	question: 'Are you dealing with a lot of pain in your relationship?',
-	      	options: ['Yes','No','Unsure'],
-					answer: ''
-	      },
-
-	      { number: 7,
-	      	question: 'We prefer to have our counseling sessions ...',
-	      	options: ['In-Office','Phone','Online','At our home'],
-					answer: ''
-	      },
-
-	      { number: 8,
-	      	question: 'Both of us are ready to end this relationship?',
-	      	options: ['Yes','No','Unsure'],
-					answer: ''
-	      },
-
-	      { number: 9,
-	      	question: 'Would your partner/spouse be able to go to counseling with you?',
-	      	options: ['Yes','No','Unsure'],
-					answer: ''
-	      }
-
-			],
+}
 
 
-          updateSuperState: obj => {
-            this.setState(obj);
-          }
-        };
-
-      const questions = [
-
-      { number: 1,
-      	question: 'Are you currently in a relationship?',
-      	options: ['Yes','No','Unsure']
-      },
-
-      { number: 2,
-      	question: 'Are you currently married?',
-      	options: ['Yes','No','Unsure']
-      },
-
-      { number: 3,
-      	question: 'Are you experiencing any of the following issues?',
-      	options: ['Infidelity','Trust','Death of a Loved One', 'Communication','Addiction','Intimacy']
-      },
-
-      { number: 4,
-      	question: 'Does your partner/spouse want counseling also?',
-      	options: ['Yes','No','Unsure']
-      },
-
-      { number: 5,
-      	question: 'Are there other family members that you would like to include in your sessions (e.g. children, parents) ?',
-      	options: ['Yes','No','Unsure']
-      },
-
-      { number: 6,
-      	question: 'Are you dealing with a lot of pain in your relationship?',
-      	options: ['Yes','No','Unsure']
-      },
-
-      { number: 7,
-      	question: 'We prefer to have our counseling sessions ...',
-      	options: ['In-Office','Phone','Online','At our home']
-      },
-
-      { number: 8,
-      	question: 'Both of us are ready to end this relationship?',
-      	options: ['Yes','No','Unsure']
-      },
-
-      { number: 9,
-      	question: 'Would your partner/spouse be able to go to counseling with you?',
-      	options: ['Yes','No','Unsure']
-      }
-
-      ]
-
-    }
 
 
+//This part tells us what is shown on the screen
   render() {
-
 
     return (
       <div className="App">
+
           <header className="App-header">
+					    <h1>What Type of Counseling is Best for You?</h1>
           </header>
 
-       		<Question questions ={this.state.questions} />
+					<form>
+       		<Question {...this.state} setAnswer={this.setAnswer}/>
+					</form>
 
-       		<footer>
-            	<p>Nikiya M. Simpson, Arkansas Relationship Counseling Center</p>
-          	</footer>
+       		<footer className="App-footer">
+            	<p>Arkansas Relationship Counseling Center</p>
+          </footer>
       </div>
     );
   }
