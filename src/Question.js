@@ -8,52 +8,87 @@ class Question extends Component {
   constructor() {
     super();
     this.state = {
-      question : '1'
+      question : null,
+      questionText: null
     }
+
+    this.setQuestions = this.setQuestions.bind(this);
+
+
   }
 
-  showQuestion(){
-    if(this.props.answer1 === '')
+  setQuestions() {
+    if(this.props.relationship === '')
       {
-        let question = 'Are you currently in a relationship?';
-        console.log(question);
-        return question;
+        this.setState({question: 'relationship'});
+        this.setState({questionText: 'Are you currently in a relationship?'});
 
       }
-    else if (this.props.answer2 === '')
+    else if (this.props.relationship === 'No' && this.props.issues === '')
       {
-        return 'Are you currently married?';
+        this.setState({question: 'issues'});
+        this.setState({questionText: 'Are you experiencing any of the following issues?'});
+      
+
       }
-    else if (this.props.answer3 === '')
+    else if (this.props.married === '')
+      {
+        this.setState({question: 'married'});
+        this.setState({questionText:  'Are you currently married?'});
+
+      }
+    else if (this.props.issues === '')
         {
-          return 'Are you experiencing any of the following issues?';
+          this.setState({question: 'issues'});
+          this.setState({questionText: 'Are you experiencing any of the following issues?'});
+
         }
-    else if (this.props.answer4 === '')
+    else if ((this.props.relationship === 'Yes' || this.props.relationship === 'Unsure') && this.props.partner === '')
         {
-          return 'oes your partner/spouse want counseling also?';
+          this.setState({question: 'partner'});
+          this.setState({questionText: 'Does your partner/spouse want counseling also?'});
+
         }
-    else if (this.props.answer5 === '')
+    else if (this.props.family === '')
         {
-          return 'Are there other family members that you would like to include in your sessions (e.g. children, parents)?';
+          this.setState({question: 'family'});
+          this.setState({questionText: 'Are there other family members that you would like to include in your sessions (e.g. children, parents)?'});
+
         }
-    else if (this.props.answer6 === '')
+    else if (this.props.pain === '')
         {
-           return 'Are you dealing with a lot of pain in your relationship?';
+          this.setState({question: 'pain'});
+          this.setState({questionText: 'Are you dealing with a lot of pain in your relationship?'});
+
         }
-    else if (this.props.answer7 === '')
+    else if (this.props.where === '')
         {
-            return 'We prefer to have our counseling sessions ...';
+          this.setState({question: 'where'});
+          this.setState({questionText: 'We prefer to have our counseling sessions ...'});
+
         }
-    else if (this.props.answer8 === '')
+    else if ((this.props.relationship === 'Yes' || this.props.relationship === 'Unsure') && this.props.end === '')
         {
-            return 'Both of us are ready to end this relationship?';
+          this.setState({question: 'end'});
+          this.setState({questionText: 'Both of us are ready to end this relationship?'});
+
         }
-    else if (this.props.answer9 === '')
+    else if ((this.props.relationship === 'Yes' || this.props.relationship === 'Unsure') && this.props.able === '')
         {
-            return 'Would your partner/spouse be able to go to counseling with you?';
+          this.setState({question: 'able'});
+          this.setState({questionText: 'Would your partner/spouse be able to go to counseling with you?'});
+
         }
   }
 
+  componentWillMount(){
+    this.setQuestions();
+
+  }
+
+  componentDidMount(){
+    console.log(this.state);
+  }
 
 
   showOptions()
@@ -63,9 +98,9 @@ class Question extends Component {
     const officeTypes = ['In-Office','Phone','Online','At our home'];
     const issues = ['Infidelity','Trust','Death of a Loved One', 'Communication','Addiction','Intimacy'];
 
-    if( q === '3')
+    if( q === 'issues')
         return issues;
-    else if (q === '7')
+    else if (q === 'where')
         return officeTypes;
     else
         return yesNoOptions;
@@ -74,14 +109,15 @@ class Question extends Component {
 
   render() {
     /* Renders question component */
-    let question = this.showQuestion();
+    let question = this.state.questionText;
     let options = this.showOptions();
 
      return (
           <div className="question">
             {question}
             <div>
-              {options.map((option) => <Option {...this.props} question = {this.state.question} key={option} option={option} />
+              {options.map((option) =>
+                <Option {...this.state} key={option} setAnswer={this.props.setAnswer.bind(this)}  option={option}/>
                 )}
             </div>
           </div>
