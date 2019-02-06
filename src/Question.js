@@ -28,7 +28,7 @@ class Question extends Component {
       {
         this.setState({question: 'issues'});
         this.setState({questionText: 'Are you experiencing any of the following issues?'});
-      
+
 
       }
     else if (this.props.married === '')
@@ -87,7 +87,14 @@ class Question extends Component {
   }
 
   componentDidMount(){
+    console.log('Question State:');
     console.log(this.state);
+  }
+
+  componentDidUpdate(){
+    console.log('Question State:');
+    console.log(this.state);
+    console.log(this.props);
   }
 
 
@@ -115,11 +122,12 @@ class Question extends Component {
      return (
           <div className="question">
             {question}
-            <div>
+            <div className="options-area">
               {options.map((option) =>
                 <Option {...this.state} key={option} setAnswer={this.props.setAnswer.bind(this)}  option={option}/>
                 )}
             </div>
+            <button className = 'next-button' onClick={this.setQuestions}>Next Question</button>
           </div>
      )
    }

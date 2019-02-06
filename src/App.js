@@ -7,6 +7,7 @@ class App extends Component {
 	  constructor() {
 				super();
 
+				//Answers to the quiz questions
 				this.state = {
 					relationship : '',
 					married : '',
@@ -20,18 +21,14 @@ class App extends Component {
 			}
 
 		}
-
+		//Runs after component is rendered
 		componentDidMount() {
+			console.log('Quiz Answers State: ');
 			console.log(this.state);
 		}
 
-
-
-
-
+		//Assigns for answers for each question
 		setAnswer(question, answer){
-
-
 			if (question === 'relationship')
 					this.setState({relationship:  answer});
 			else if (question === 'married')
@@ -53,24 +50,17 @@ class App extends Component {
 			else {
 				console.log("Question not recognized");
 			}
-
-
 		}
 
 //This part tells us what is shown on the screen
   render() {
-
     return (
       <div className="App">
-
           <header className="App-header">
 					    <h1>What Type of Counseling is Best for You?</h1>
           </header>
-
-
-       		<Question {...this.state} setAnswer={this.setAnswer.bind(this)}/>
-			
-
+       			<Question {...this.state} setAnswer={this.setAnswer.bind(this)}/>
+						
        		<footer className="App-footer">
             	<p>Arkansas Relationship Counseling Center</p>
           </footer>
