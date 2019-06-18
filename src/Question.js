@@ -114,10 +114,14 @@ class Question extends Component {
   }
 
 
+
+
   render() {
     /* Renders question component */
     let question = this.state.questionText;
     let options = this.showOptions();
+
+
 
      return (
           <div className="question">
@@ -127,7 +131,10 @@ class Question extends Component {
                 <Option {...this.state} key={option} setAnswer={this.props.setAnswer.bind(this)}  option={option}/>
                 )}
             </div>
-            <button className = 'next-button' onClick={this.setQuestions}>Next Question</button>
+            {this.state.question === 'able' ? <button className = 'next-button'>Submit</button> : <button className = 'next-button' onClick={this.setQuestions}>Next Question</button>
+            }
+            
+            
           </div>
      )
    }

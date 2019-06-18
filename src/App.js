@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Question from './Question'
+import Question from './Question';
 
 class App extends Component {
 
@@ -18,7 +18,7 @@ class App extends Component {
 					where : '',
 					end : '',
 					able: ''
-			}
+			};
 
 		}
 		//Runs after component is rendered
@@ -57,7 +57,7 @@ class App extends Component {
     return (
       <div className="App">
           <header className="App-header">
-					    <h1>What Type of Counseling is Best for You?</h1>
+			   <h1>What Type of Counseling is Best for You?</h1>
           </header>
        			<Question {...this.state} setAnswer={this.setAnswer.bind(this)}/>
 						
